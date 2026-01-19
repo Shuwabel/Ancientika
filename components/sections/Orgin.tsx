@@ -4,6 +4,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,16 +59,36 @@ const Orgin = () => {
       </div>
 
       <div className="flex flex-col items-center justify-center gap-2 max-sm:items-start">
-        <p className="uppercase text-xs fontmelo font-bold text-amber-500 tracking-widest">
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeInOut" }}
+          viewport={{ once: true }}
+          className="uppercase text-xs fontmelo font-bold text-amber-500 tracking-widest"
+        >
           The Craft
-        </p>
-        <h1 className="text-5xl zina ">The Origin Scroll</h1>
-        <p className="clash text-sm mt-2 text-center text-neutral-200 max-sm:text-left">
+        </motion.p>
+        <motion.h1
+          className="text-5xl zina "
+          initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1, ease: "easeInOut" }}
+          viewport={{ once: true }}
+        >
+          The Origin Scroll
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1, ease: "easeInOut" }}
+          viewport={{ once: true }}
+          className="clash text-sm mt-2 text-center text-neutral-200 max-sm:text-left"
+        >
           A garment is a story of hands and history.{" "}
           <span className="block">
             Witness the evolution of an Ancientica piece.
           </span>
-        </p>
+        </motion.p>
         {/* Scroll */}
       </div>
 

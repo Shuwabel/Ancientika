@@ -1,5 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import BlurRevealText from "../common/BlurRevealText";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
@@ -16,18 +18,33 @@ const Hero = () => {
 
         <div className="w-full h-full flex items-center justify-center p-10 bg-primary flex-col relative gap-8 max-sm:gap-12">
           <div className="text-xl clash text-center max-sm:text-xl">
-            your presence{" "}
-            <span className="block zina font-black text-8xl uppercase max-sm:text-6xl">
-              refined.
-            </span>
+            <motion.span
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              viewport={{ once: true }}
+            >
+              your presence{" "}
+            </motion.span>
+
+            <BlurRevealText>
+              <span className="block zina font-black text-8xl uppercase max-sm:text-6xl">
+                refined.
+              </span>
+            </BlurRevealText>
           </div>
 
-          <p className="w-[24vw] max-sm:w-full clash text-sm text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+            viewport={{ once: true }}
+            className="w-[24vw] max-sm:w-full clash text-sm text-center"
+          >
             Essential forms for modern living. Thoughtfully designed to move
             with you, adapt to your rhythm. Built to live with you, not just on
             you.
-          </p>
-
+          </motion.p>
           <div className="flex flex-col w-75 gap-8 clash">
             <div className="flex flex-col gap-2">
               <input

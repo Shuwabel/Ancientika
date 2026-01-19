@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const Philosophy = () => {
   return (
@@ -14,12 +15,26 @@ const Philosophy = () => {
           />
         </div>
         <div className="text-center w-200 flex flex-col items-center justify-center gap-2">
-          <h1 className="fontmelo text-4xl font-black">The Philosophy</h1>
-          <p className="clash text-lg w-150 max-sm:w-100">
+          <motion.h1
+            className="fontmelo font-black text-4xl "
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+            viewport={{ once: true }}
+          >
+            The Philosophy
+          </motion.h1>
+          <motion.p
+            className="clash text-lg w-150 max-sm:w-100"
+            initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1, ease: "easeInOut", delay: 0.3 }}
+            viewport={{ once: true }}
+          >
             We believe in the luxury of less. A study in texture, warmth, and
             time. Our garments are crafted with precision and care, meant to
             last beyond seasons.
-          </p>
+          </motion.p>
         </div>
       </div>
 

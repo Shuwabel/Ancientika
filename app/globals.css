@@ -41,12 +41,23 @@ body {
 
 @font-face {
   font-family: "Melodrama";
-  src: url("/fonts/MeloDrama/Melodrama-Variable.ttf") format("truetype");
+  src: url("/fonts/Melodrama/Melodrama-Regular.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Melodrama";
+  src: url("/fonts/Melodrama/Melodrama-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
 .fontmelo {
+  font-family: "Melodrama", sans-serif;
+}
+
+.fontmelobold {
   font-family: "Melodrama", sans-serif;
 }
 

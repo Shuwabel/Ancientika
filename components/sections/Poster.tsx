@@ -4,6 +4,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,12 +32,10 @@ const Poster = () => {
       {
         opacity: 0,
         yPercent: 120,
-        rotate: 75,
       },
       {
         opacity: 1,
         yPercent: -200,
-        rotate: 180,
       },
       0,
     );
@@ -45,12 +44,10 @@ const Poster = () => {
       img2Ref.current,
       {
         yPercent: 120,
-        rotate: 180,
       },
       {
         yPercent: -160,
         delay: 0.1,
-        rotate: 75,
       },
       0,
     );
@@ -63,12 +60,32 @@ const Poster = () => {
         className="wrapper h-screen w-full flex flex-col items-center bg-secondary font-sans text-white gap-8 text-center py-12 justify-center"
       >
         <div className="flex flex-col items-center justify-center gap-4">
-          <h1 className="clash uppercase text-5xl">The Edit</h1>
-          <p className="clash w-85">
+          <motion.h1
+            className="clash uppercase text-5xl"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+            viewport={{ once: true }}
+          >
+            The Edit
+          </motion.h1>
+          <motion.p
+            className="clash w-85"
+            initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+            viewport={{ once: true }}
+          >
             Join our newsletter for early access to new drops, exclusive
             editorial content, and private collections.
-          </p>
-          <div className="flex flex-col w-75 gap-8 clash">
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1, ease: "easeInOut", delay: 0.5 }}
+            viewport={{ once: true }}
+            className="flex flex-col w-75 gap-8 clash"
+          >
             <div className="flex flex-col gap-2">
               <input
                 type="email"
@@ -86,7 +103,7 @@ const Poster = () => {
                 Submit
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <div
