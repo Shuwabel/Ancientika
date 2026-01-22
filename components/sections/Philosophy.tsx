@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const Philosophy = () => {
   return (
-    <div className="flex flex-col w-full h-full items-center justify-center py-8">
+    <div className="flex flex-col w-full h-full items-center justify-center py-8 cursor-default">
       <div className="flex flex-col items-center justify-center gap-4 mx-8">
         <div className="relative w-15 h-15">
           <Image

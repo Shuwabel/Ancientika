@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import MouseMove from "@/components/common/MouseMove";
 
 export const metadata: Metadata = {
   title: "Ancientika",
@@ -13,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>{children}</body>
+      <body className={`antialiased`}>
+        <MouseMove />
+        {children}
+      </body>
     </html>
   );
 }

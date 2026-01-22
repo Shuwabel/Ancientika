@@ -17,7 +17,7 @@ const Intro = ({ onComplete }: IntroProps) => {
       });
 
       tl.fromTo(".logo", { opacity: 0 }, { opacity: 1, duration: 1 })
-        .to(".logo", { scale: 0.5, duration: 0.5 })
+        .to(".logo", { scale: 0.5, filter: "invert(0%)", duration: 0.5 })
         .fromTo(
           ".circle",
           { opacity: 0, scale: 0.5 },

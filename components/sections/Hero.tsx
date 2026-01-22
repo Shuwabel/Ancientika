@@ -28,7 +28,7 @@ const Hero = () => {
             </motion.span>
 
             <BlurRevealText>
-              <span className="block zina font-black text-9xl uppercase max-sm:text-7xl">
+              <span className="magnet block zina font-black text-9xl uppercase max-sm:text-7xl cursor-default">
                 refined.
               </span>
             </BlurRevealText>
@@ -39,14 +39,20 @@ const Hero = () => {
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 1, ease: "easeInOut" }}
             viewport={{ once: true }}
-            className="w-[24vw] max-sm:w-full clash text-sm text-center"
+            className="w-[24vw] max-sm:w-full clash text-sm text-center cursor-default"
           >
             Essential forms for modern living. Thoughtfully designed to move
             with you, adapt to your rhythm. Built to live with you, not just on
             you.
           </motion.p>
-          <div className="flex flex-col w-75 gap-8 clash">
-            <div className="flex flex-col gap-2">
+          <motion.div
+            initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1, ease: "easeInOut", delay: 0.5 }}
+            viewport={{ once: true }}
+            className="flex flex-col w-75 gap-8 clash"
+          >
+            <div className="flex flex-col gap-2 magnet">
               <input
                 type="name"
                 name="name"
@@ -55,7 +61,7 @@ const Hero = () => {
                 className="border-b rounded-3xl outline-none px-4 placeholder:text-neutral-500"
               />
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 magnet">
               <input
                 type="email"
                 name=""
@@ -64,15 +70,15 @@ const Hero = () => {
                 className="border-b rounded-3xl  outline-none px-4 placeholder:text-neutral-500 bg-transparent "
               />
             </div>
-            <div className="w-full flex items-center justify-center">
+            <div className="w-full flex items-center justify-center magnet">
               <button
                 type="submit"
-                className=" bg-secondary cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out hover:bg-primary border-b border-secondary hover:text-black px-4 py-1 rounded-xl text-white"
+                className=" bg-secondary cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out hover:bg-primary border-b border-secondary hover:text-black px-4 py-1 rounded-xl text-white "
               >
                 Submit
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

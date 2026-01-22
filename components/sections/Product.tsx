@@ -40,7 +40,7 @@ const Product = () => {
 
         <div className="w-10 h-10 rounded-full shadow-xl border border-black/15 absolute top-50 left-60 backdrop-blur-2xl flex items-center justify-center max-sm:left-10 max-sm:top-80 gro">
           <PiPlus
-            className="w-full h-full text-black p-2"
+            className={`w-full h-full text-black p-2 ${show1 ? "rotate-180" : "rotate-0"} transition-all duration-300`}
             onClick={() => setShow1(!show1)}
           />
           <div className="absolute right-10 flex flex-row-reverse items-center justify-center gap-2 max-sm:left-24 max-sm:flex-row max-sm:items-center">
@@ -57,7 +57,7 @@ const Product = () => {
 
         <div className="w-10 h-10 rounded-full shadow-xl border border-black/15 absolute top-50 left-120 backdrop-blur-2xl flex items-center justify-center max-sm:left-60 max-sm:top-60 gro">
           <PiPlus
-            className="w-full h-full text-black p-2 "
+            className={`w-full h-full text-black p-2 ${show2 ? "rotate-180" : "rotate-0"} transition-all duration-300`}
             onClick={() => setShow2(!show2)}
           />
           <div className="absolute right-10 flex flex-row-reverse items-center justify-center gap-2">
@@ -74,7 +74,7 @@ const Product = () => {
 
         <div className="w-10 h-10 rounded-full shadow-xl border border-black/15 absolute top-125 left-100 backdrop-blur-2xl flex items-center justify-center max-sm:top-160 max-sm:left-60 gro">
           <PiPlus
-            className="w-full h-full text-black p-2 max-sm:text-white"
+            className={`w-full h-full text-black p-2 ${show3 ? "rotate-180" : "rotate-0"} transition-all duration-300`}
             onClick={() => setShow3(!show3)}
           />
           <div className="absolute right-10 flex flex-row-reverse items-center justify-center gap-2">

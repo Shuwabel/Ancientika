@@ -61,7 +61,7 @@ const Poster = () => {
       >
         <div className="flex flex-col items-center justify-center gap-4">
           <motion.h1
-            className="clash uppercase text-5xl"
+            className="clash uppercase text-5xl cursor-default"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeInOut" }}
@@ -70,7 +70,7 @@ const Poster = () => {
             The Edit
           </motion.h1>
           <motion.p
-            className="clash w-85"
+            className="clash w-85 cursor-default"
             initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 1, ease: "easeInOut" }}
@@ -107,7 +107,7 @@ const Poster = () => {
         </div>
 
         <div
-          className="w-96 h-120 max-sm:scale-[0.8] scale-[1] absolute left-32 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-secondary  bg-center bg-cover bg-no-repeat"
+          className="w-96 h-120 max-sm:scale-[0.8] scale-[1] absolute left-32 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-secondary bg-center bg-cover bg-no-repeat"
           ref={imgRef}
         >
           <Image
@@ -118,7 +118,7 @@ const Poster = () => {
           />
         </div>
         <div
-          className="w-96 h-120 max-sm:scale-[0.8]  scale-[1] absolute right-0 max-sm:-right-72 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-secondary bg-center bg-cover bg-no-repeat"
+          className="w-96 h-120 max-sm:scale-[0.8]  scale-[1] absolute right-0 max-sm:-right-90 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-secondary bg-center bg-cover bg-no-repeat"
           ref={img2Ref}
         >
           <Image

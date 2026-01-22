@@ -7,47 +7,46 @@ const MouseMove = () => {
   const followerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const enlarge = () => {
-      if (followerRef.current) {
-        gsap.to(followerRef.current, {
-          scale: 2,
-          duration: 0.2,
-        });
-      }
-    };
+    const follower = followerRef.current;
+    if (!follower) return;
 
-    const contract = () => {
-      if (followerRef.current) {
-        gsap.to(followerRef.current, {
-          scale: 1,
-          duration: 0.2,
-        });
-      }
-    };
+    const magnets = Array.from(
+      document.querySelectorAll<HTMLElement>(".magnet"),
+    );
+
+    const enlarge = () => gsap.to(follower, { scale: 2, duration: 0.2 });
+
+    const contract = () => gsap.to(follower, { scale: 1, duration: 0.2 });
 
     const moveFollower = (e: MouseEvent) => {
-      if (followerRef.current) {
-        gsap.to(followerRef.current, {
-          x: e.clientX - followerRef.current.offsetWidth / 2,
-          y: e.clientY - followerRef.current.offsetHeight / 2,
-          duration: 0.02,
-          ease: "power2.inOut",
-        });
-      }
+      gsap.to(follower, {
+        x: e.clientX - follower.offsetWidth / 2,
+        y: e.clientY - follower.offsetHeight / 2,
+        duration: 0.05,
+        ease: "power2.out",
+      });
+
+      let isNearMagnet = false;
+
+      magnets.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        const dx = e.clientX - centerX;
+        const dy = e.clientY - centerY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        const triggerRadius = Math.max(rect.width, rect.height);
+
+        if (distance < triggerRadius) {
+          isNearMagnet = true;
+        }
+      });
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      isNearMagnet ? enlarge() : contract();
     };
-
-    const interactEl = document.querySelectorAll(".magnet");
-
-    interactEl.forEach((el) => {
-      el.addEventListener("mouseenter", enlarge);
-      el.addEventListener("mouseleave", contract);
-      return () => {
-        interactEl.forEach((el) => {
-          el.removeEventListener("mouseenter", enlarge);
-          el.removeEventListener("mouseleave", contract);
-        });
-      };
-    });
 
     window.addEventListener("mousemove", moveFollower);
 
@@ -55,11 +54,14 @@ const MouseMove = () => {
       window.removeEventListener("mousemove", moveFollower);
     };
   }, []);
+
   return (
     <div
       ref={followerRef}
-      className="fixed w-4 h-4 top-0 left-0 pointer-events-none z-50 border border-black bg-black rounded-full lg:flex items-center justify-center transition-all duration-[0.05s] hidden filter blur-[4px]"
-    ></div>
+      className="fixed w-6 h-6 top-0 left-0 pointer-events-none z-50 border border-black bg-transparent rounded-full hidden lg:flex items-center justify-center"
+    >
+      <div className="w-1.5 h-1.5 animate-spin bg-black" />
+    </div>
   );
 };
 

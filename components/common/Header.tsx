@@ -19,7 +19,7 @@ const Header = () => {
       className="w-full absolute top-0 left-0 h-[10vh] flex items-center justify-between px-7.5 py-5 text-sm z-50 shadow-md "
     >
       <nav className="flex items-center px-2 py-0.5 w-full justify-between">
-        <div className="heading w-8 relative h-8">
+        <div className="heading w-8 relative h-8 magnet">
           <Image
             src={"/Logo.png"}
             alt="Logo"
