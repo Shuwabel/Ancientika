@@ -13,6 +13,7 @@ import Orgin from "@/components/sections/Orgin";
 import Product from "@/components/sections/Product";
 import Intro from "@/components/common/Intro";
 import IntroSm from "@/components/common/IntroSm";
+import CTA from "@/components/sections/CTA";
 
 export default function Home() {
   useLenis();
@@ -41,12 +42,13 @@ export default function Home() {
         >
           <Header />
 
-          <main className="relative bg-white">
+          <main className="relative g-white">
             <Hero />
             <Poster />
             <Philosophy />
             <Orgin />
             <Product />
+            <CTA />
           </main>
 
           <div className="h-screen w-full bg-transparent" />

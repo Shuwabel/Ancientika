@@ -11,7 +11,7 @@ const MouseMove = () => {
     if (!follower) return;
 
     const magnets = Array.from(
-      document.querySelectorAll<HTMLElement>(".magnet"),
+      document.querySelectorAll<HTMLElement>(".Special"),
     );
 
     const enlarge = () => gsap.to(follower, { scale: 2, duration: 0.2 });
@@ -44,7 +44,6 @@ const MouseMove = () => {
         }
       });
 
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       isNearMagnet ? enlarge() : contract();
     };
 
@@ -58,9 +57,9 @@ const MouseMove = () => {
   return (
     <div
       ref={followerRef}
-      className="fixed w-6 h-6 top-0 left-0 pointer-events-none z-50 border border-black bg-transparent rounded-full hidden lg:flex items-center justify-center"
+      className="fixed w-6 h-6 top-0 left-0 pointer-events-none z-50 border border-primary bg-primary rounded-full hidden lg:flex items-center justify-center mix-blend-exclusion"
     >
-      <div className="w-1.5 h-1.5 animate-spin bg-black" />
+      <div className="w-1 h-1 animate-spin bg-black" />
     </div>
   );
 };

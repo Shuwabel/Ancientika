@@ -4,6 +4,39 @@ import BlurRevealText from "../common/BlurRevealText";
 import { motion } from "framer-motion";
 
 const Hero = () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const email = formData.get("email") as string;
+
+    if (!email) return;
+
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      // show success or error
+      const messageDiv = document.getElementById("message");
+      if (res.ok) {
+        messageDiv!.textContent = data.message;
+        form.reset();
+      } else {
+        messageDiv!.textContent = data.error || "Something went wrong";
+      }
+    } catch (err) {
+      console.error(err);
+      const messageDiv = document.getElementById("message");
+      messageDiv!.textContent = "Failed to send request";
+    }
+  };
+
   return (
     <div className="relative w-screen h-screen overflow-hidden text-black">
       <div className="flex items-center w-full h-full max-sm:flex-col">
@@ -16,7 +49,7 @@ const Hero = () => {
           />
         </div>
 
-        <div className="w-full h-full flex items-center justify-center p-10 bg-primary flex-col relative gap-8 max-sm:gap-12">
+        <div className="Special w-full h-full flex items-center justify-center p-10 bg-primary flex-col relative gap-8 max-sm:gap-12">
           <div className="text-xl clash text-center max-sm:text-xl">
             <motion.span
               initial={{ opacity: 0, y: 50 }}
@@ -45,7 +78,8 @@ const Hero = () => {
             with you, adapt to your rhythm. Built to live with you, not just on
             you.
           </motion.p>
-          <motion.div
+          <motion.form
+            onSubmit={handleSubmit}
             initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 1, ease: "easeInOut", delay: 0.5 }}
@@ -54,7 +88,7 @@ const Hero = () => {
           >
             <div className="flex flex-col gap-2 magnet">
               <input
-                type="name"
+                type="text"
                 name="name"
                 id="1"
                 placeholder="Name"
@@ -64,7 +98,7 @@ const Hero = () => {
             <div className="flex flex-col gap-2 magnet">
               <input
                 type="email"
-                name=""
+                name="email"
                 id="1"
                 placeholder="Email"
                 className="border-b rounded-3xl  outline-none px-4 placeholder:text-neutral-500 bg-transparent "
@@ -73,12 +107,13 @@ const Hero = () => {
             <div className="w-full flex items-center justify-center magnet">
               <button
                 type="submit"
-                className=" bg-secondary cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out hover:bg-primary border-b border-secondary hover:text-black px-4 py-1 rounded-xl text-white "
+                className=" bg-secondary cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out hover:bg-accent border-b border-secondary hover:text-black px-4 py-1 rounded-xl text-white "
               >
                 Submit
               </button>
             </div>
-          </motion.div>
+          </motion.form>
+          <div id="message"></div>
         </div>
       </div>
     </div>

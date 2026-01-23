@@ -53,7 +53,7 @@ const Orgin = () => {
         <Image
           src={"/img4.jpg"}
           alt="Image"
-          className="object-cover w-full h-full object-top"
+          className="object-cover w-full h-full object-top filter grayscale-100"
           fill
         />
       </div>
@@ -64,7 +64,7 @@ const Orgin = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeInOut" }}
           viewport={{ once: true }}
-          className="uppercase text-xs fontmelo font-bold text-amber-500 tracking-widest"
+          className="uppercase text-xs clash font-bold text-[#CD7F32] tracking-widest"
         >
           The Craft
         </motion.p>
@@ -100,7 +100,7 @@ const Orgin = () => {
         {/* Item 1 - Left */}
         <div className="timeline-item relative mb-30 grid grid-cols-2 max-sm:grid-cols-2 max-sm:place-items-center max-sm:items-center  items-start ">
           <div className="content opacity-0 translate-y-6 pr-12 max-sm:pl-30 text-right max-sm:text-left">
-            <p className="fontozean text-amber-300">Phase 1</p>
+            <p className="clash text-[#CD7F32] font-bold">Phase 1</p>
             <h3 className="text-2xl font-bold fontmelo ">The Sourcing</h3>
             <p className="text-sm text-gray-300 clash w-50">
               Finest wool sourced from artisanal farms in the Italian Piedmont.
@@ -119,7 +119,7 @@ const Orgin = () => {
           </div>
 
           <div className="content opacity-0 translate-y-6 pl-12 max-sm:pl-0 max-sm:pr-12">
-            <p className="fontozean text-amber-300">Phase 2</p>
+            <p className="clash text-[#CD7F32] font-bold">Phase 2</p>
             <h3 className="text-xl font-bold fontmelo">The Pattern</h3>
             <p className="text-sm text-gray-300 clash w-50">
               Hand-drafted silhouettes that honor skeletal forms and movement.
@@ -130,7 +130,7 @@ const Orgin = () => {
         {/* Item 3 - Left */}
         <div className="timeline-item relative mb-30 grid grid-cols-2 max-sm:grid-cols-1 max-sm:place-items-center max-sm:items-center  items-start ">
           <div className="content opacity-0 translate-y-6 pr-12 text-right max-sm:text-left">
-            <p className="fontozean text-amber-300">Phase 3</p>
+            <p className="clash text-[#CD7F32] font-bold">Phase 3</p>
             <h3 className="text-xl font-bold fontmelo">The Construction</h3>
             <p className="text-sm text-gray-300 clash w-50">
               Single-needle tailoring with 12 stitches per inch for extreme
@@ -150,7 +150,7 @@ const Orgin = () => {
           </div>
 
           <div className="content opacity-0 translate-y-6 pl-12 max-sm:pl-0 max-sm:pr-12">
-            <p className="fontozean text-amber-300">Phase 4</p>
+            <p className="clash text-[#CD7F32] font-bold">Phase 4</p>
             <h3 className="text-xl font-bold fontmelo">The Finishing</h3>
             <p className="text-sm text-gray-300 clash w-50">
               Every piece is hand-dyed using organic pigments for a unique soul.

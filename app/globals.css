@@ -5,6 +5,7 @@
   --foreground: #171717;
   --primary: #f5f5dc;
   --secondary: #583e37;
+  --accent: #af6e4d;
 }
 
 @theme inline {
@@ -12,6 +13,7 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,6 +22,7 @@
     --foreground: #171717;
     --primary: #f5f5dc;
     --secondary: #583e37;
+    --accent: #af6e4d;
   }
 }
 

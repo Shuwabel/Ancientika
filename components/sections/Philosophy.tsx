@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const Philosophy = () => {
   return (
-    <div className="flex flex-col w-full h-full items-center justify-center py-8 cursor-default">
+    <div className="flex flex-col w-full h-full items-center justify-center py-8 cursor-default bg-white">
       <div className="flex flex-col items-center justify-center gap-4 mx-8">
         <div className="relative w-15 h-15">
           <Image
@@ -49,7 +49,7 @@ const Philosophy = () => {
             />
             <div className="w-full h-full inset-0 bg-black/30 absolute group opacity-0 hover:opacity-100 transition-all duration-300 ease-in-out clash ">
               {" "}
-              <div className="bg-white w-24 h-10 absolute bottom-2 right-2 flex items-center justify-center text-nowrap text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out cursor-pointer hover:bg-black hover:text-white hover:scale-95">
+              <div className="bg-white w-24 h-10 absolute bottom-2 right-2 flex items-center justify-center text-nowrap text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out cursor-pointer hover:bg-accent hover:text-white hover:scale-95">
                 Quick View
               </div>
               <div className="text-[16px] absolute bottom-2 left-2 text-white">
@@ -66,7 +66,7 @@ const Philosophy = () => {
             />
             <div className="w-full h-full inset-0 bg-black/30 absolute group opacity-0 hover:opacity-100 transition-all duration-300 ease-in-out clash">
               {" "}
-              <div className="bg-white w-24 h-10 absolute bottom-2 right-2 flex items-center justify-center  text-nowrap text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out cursor-pointer hover:bg-black hover:text-white hover:scale-95">
+              <div className="bg-white w-24 h-10 absolute bottom-2 right-2 flex items-center justify-center  text-nowrap text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out cursor-pointer hover:bg-accent hover:text-white hover:scale-95">
                 Quick View
               </div>
               <div className="text-[16px] absolute bottom-2 left-2 text-white">
@@ -85,7 +85,7 @@ const Philosophy = () => {
             />
             <div className="w-full h-full inset-0 bg-black/30 absolute group opacity-0 hover:opacity-100 transition-all duration-300 ease-in-out clash">
               {" "}
-              <div className="bg-white w-24 h-10 absolute bottom-2 right-2 flex items-center justify-center  text-nowrap text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out cursor-pointer hover:bg-black hover:text-white hover:scale-95">
+              <div className="bg-white w-24 h-10 absolute bottom-2 right-2 flex items-center justify-center  text-nowrap text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out cursor-pointer hover:bg-accent hover:text-white hover:scale-95">
                 Quick View
               </div>
               <div className="text-[16px] absolute bottom-2 left-2 text-white">
@@ -102,7 +102,7 @@ const Philosophy = () => {
             />
             <div className="w-full h-full inset-0 bg-black/30 absolute group opacity-0 hover:opacity-100 transition-all duration-300 ease-in-out clash">
               {" "}
-              <div className="bg-white w-24 h-10 absolute bottom-2 right-2 flex items-center justify-center  text-nowrap text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out cursor-pointer hover:bg-black hover:text-white hover:scale-95">
+              <div className="bg-white w-24 h-10 absolute bottom-2 right-2 flex items-center justify-center  text-nowrap text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out cursor-pointer hover:bg-accent hover:text-white hover:scale-95">
                 Quick View
               </div>
               <div className="text-[16px] absolute bottom-2 left-2 text-white">

@@ -79,16 +79,17 @@ const Footer = () => {
               About
             </h1>
             <p className="text-sm text-neutral-700 clash">
-              We could not have created this demo without the help of an amazing
-              source of content and products. Visit our about page to find out
-              where all the products used in this demo care from.
+              Ancientika, Where contemporary minimalism meets modern elegance.
+              Here, contemporary minimalism and modern elegance converge. Our
+              menswear blends sleek design with classic refinement, creating
+              pieces that feel current yet enduring.
             </p>
           </div>
         </div>
       </div>
 
       {/* Icons */}
-      <div className="w-full flex items-center justify-between">
+      <div className="w-full flex items-center justify-between max-sm:flex-col max-sm:gap-8">
         <div className="flex items-center gap-6">
           <div className="flex items-center clash">
             <p>EN</p>
@@ -128,8 +129,10 @@ const Footer = () => {
 
       {/* Logo */}
       <div className="w-full text-center flex items-center justify-center">
-        <h1 className="text-[300px] uppercase zina leading-28">ancientika </h1>
-        <h1 className="text-[40px] uppercase zina leading-16 hidden max-sm:flex absolute bg-background px-4 h-fit">
+        <h1 className="text-[350px] max-sm:uppercase max-sm:text-[200px] max-sm:leading-22 zina leading-28">
+          ancientika{" "}
+        </h1>
+        <h1 className="text-[40px]  zina leading-16 hidden max-sm:flex absolute bg-background px-4 h-fit">
           ancientika{" "}
         </h1>
       </div>

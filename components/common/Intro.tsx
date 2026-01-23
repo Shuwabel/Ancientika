@@ -17,11 +17,16 @@ const Intro = ({ onComplete }: IntroProps) => {
       });
 
       tl.fromTo(".logo", { opacity: 0 }, { opacity: 1, duration: 1 })
-        .to(".logo", { scale: 0.5, filter: "invert(0%)", duration: 0.5 })
+        .to(".logo", {
+          scale: 0.5,
+          filter: "invert(0%)",
+          duration: 0.5,
+          ease: "power4.inOut",
+        })
         .fromTo(
           ".circle",
           { opacity: 0, scale: 0.5 },
-          { opacity: 1, scale: 1, duration: 0.5 },
+          { opacity: 1, scale: 1, duration: 0.5, ease: "expo.inOut" },
           "-=0.3",
         )
         .fromTo(
@@ -31,17 +36,20 @@ const Intro = ({ onComplete }: IntroProps) => {
             height: "100vh",
             opacity: 1,
             duration: 1.5,
+            ease: "power4.inOut",
           },
         )
         .to(".box", {
           clipPath: "inset(0% 100% 0% 0%)",
           duration: 1,
+          ease: "expo.inOut",
         })
         .to(
           ".box2",
           {
             clipPath: "inset(0% 0% 0% 100%)",
             duration: 1,
+            ease: "expo.inOut",
           },
           "<",
         );
@@ -65,6 +73,11 @@ const Intro = ({ onComplete }: IntroProps) => {
 
       <div className="logo w-16 h-16 fixed invert filter opacity-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
         <Image src="/Logo.png" alt="Logo" fill className="object-contain" />
+      </div>
+
+      <div className="absolute h-full inset-0 w-full grid grid-cols-2">
+        <div className="bg-secondary/50 box3" />
+        <div className="bg-secondary/50 box4" />
       </div>
     </div>
   );

@@ -1,93 +1,154 @@
 import { useState } from "react";
 import Image from "next/image";
-import { PiPlus } from "react-icons/pi";
-import { motion } from "framer-motion";
+import { PiMinus, PiPlus } from "react-icons/pi";
+import { AnimatePresence, motion } from "framer-motion";
+
+const hotspots = [
+  {
+    id: 0,
+    top: "top-20",
+    left: "left-30",
+    topsm: "max-sm:top-20",
+    leftsm: "max-sm:left-10",
+    img: "/img9.jpg",
+    title: "Main 30 Sweater",
+    desc: "A soft knit essential designed for warmth, balance, and quiet confidence.",
+  },
+  {
+    id: 1,
+    top: "top-70",
+    left: "left-150",
+    topsm: "max-sm:top-20",
+    leftsm: "max-sm:left-70",
+    img: "/img7.jpg",
+    title: "Winter Layer",
+    desc: "Structured yet relaxed. Built to move effortlessly through cold seasons.",
+  },
+  {
+    id: 2,
+    top: "top-125",
+    left: "left-30",
+    topsm: "max-sm:top-160",
+    leftsm: "max-sm:left-40",
+    img: "/img8.jpg",
+    title: "Editorial Essential",
+    desc: "Minimal form, maximum intent. A timeless winter staple.",
+  },
+];
 
 const Product = () => {
-  const [show1, setShow1] = useState(false);
-  const [show2, setShow2] = useState(false);
-  const [show3, setShow3] = useState(false);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <div className="w-full h-fit p-8 flex max-sm:flex-col max-sm:gap-4">
+    <div className="w-full h-fit p-8 flex max-sm:flex-col max-sm:gap-4 bg-white">
+      {/* LEFT TEXT */}
       <div className="w-full h-full">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeInOut" }}
+          transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="text-sm fontozean font-bold text-amber-700"
+          className="text-sm clash uppercase font-bold text-[#CD7F32]"
         >
           Interactive Exposure
         </motion.p>
+
         <motion.h1
           initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 1, ease: "easeInOut" }}
+          transition={{ duration: 1 }}
           viewport={{ once: true }}
           className="text-9xl zina max-sm:text-5xl"
         >
           The Winter Editorial
         </motion.h1>
       </div>
+
+      {/* IMAGE SECTION */}
       <div className="w-full h-[90vh] relative overflow-hidden">
         <Image
-          src={"/img4.jpg"}
-          alt="Image"
-          className="object-cover w-full h-full hover:scale-105 transition-all duration-300"
+          src="/img6.jpg"
+          alt="Editorial"
           fill
+          className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
         />
 
-        <div className="w-10 h-10 rounded-full shadow-xl border border-black/15 absolute top-50 left-60 backdrop-blur-2xl flex items-center justify-center max-sm:left-10 max-sm:top-80 gro">
-          <PiPlus
-            className={`w-full h-full text-black p-2 ${show1 ? "rotate-180" : "rotate-0"} transition-all duration-300`}
-            onClick={() => setShow1(!show1)}
-          />
-          <div className="absolute right-10 flex flex-row-reverse items-center justify-center gap-2 max-sm:left-24 max-sm:flex-row max-sm:items-center">
-            <div
-              className={`w-0 border border-black h-0  group-hover:border-black transition-all duration-300 ${show1 ? "w-20 border border-black " : "w-0 border border-black"}`}
-            />
-            <div
-              className={`clash text-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 ${show1 ? "opacity-100" : "opacity-0"}`}
-            >
-              White Vest
-            </div>
+        {/* HOTSPOTS */}
+        {hotspots.map((spot) => (
+          <div
+            key={spot.id}
+            className={`w-10 h-10 rounded-full shadow-xl border border-black/15 absolute 
+            ${spot.top} ${spot.left} ${spot.leftsm} ${spot.topsm} backdrop-blur-2xl flex items-center justify-center cursor-pointer z-50`}
+            onClick={() =>
+              setActiveIndex(activeIndex === spot.id ? null : spot.id)
+            }
+          >
+            <AnimatePresence mode="wait">
+              {activeIndex === spot.id ? (
+                <motion.div
+                  key="minus"
+                  initial={{ rotate: -90, scale: 0, opacity: 0 }}
+                  animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                  exit={{ rotate: 90, scale: 0, opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <PiMinus className="w-full h-full p-2 text-black z-40" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="plus"
+                  initial={{ rotate: 90, scale: 0, opacity: 0 }}
+                  animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                  exit={{ rotate: -90, scale: 0, opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <PiPlus className="w-full h-full p-2 text-black z-40" />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-        </div>
+        ))}
 
-        <div className="w-10 h-10 rounded-full shadow-xl border border-black/15 absolute top-50 left-120 backdrop-blur-2xl flex items-center justify-center max-sm:left-60 max-sm:top-60 gro">
-          <PiPlus
-            className={`w-full h-full text-black p-2 ${show2 ? "rotate-180" : "rotate-0"} transition-all duration-300`}
-            onClick={() => setShow2(!show2)}
-          />
-          <div className="absolute right-10 flex flex-row-reverse items-center justify-center gap-2">
-            <div
-              className={`w-0 border border-black h-0 group-hover:w-20 group-hover:border-black transition-all duration-300 ${show2 ? "w-20 border-black " : "w-0"}`}
-            />
-            <div
-              className={`clash text-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 ${show2 ? "opacity-100" : "opacity-0"}`}
+        {/* OVERLAY CARD */}
+        <AnimatePresence>
+          {activeIndex !== null && (
+            <motion.div
+              className="absolute inset-0  flex items-center justify-center bg-black/25 backdrop-blur-sm pointer-events-none z-30"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
             >
-              White Shirt
-            </div>
-          </div>
-        </div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="w-80 bg-white rounded-lg overflow-hidden shadow-2xl"
+              >
+                {/* IMAGE */}
+                <div className="relative h-60 w-full">
+                  <Image
+                    src={hotspots[activeIndex].img}
+                    alt=""
+                    fill
+                    className="object-cover"
+                  />
+                </div>
 
-        <div className="w-10 h-10 rounded-full shadow-xl border border-black/15 absolute top-125 left-100 backdrop-blur-2xl flex items-center justify-center max-sm:top-160 max-sm:left-60 gro">
-          <PiPlus
-            className={`w-full h-full text-black p-2 ${show3 ? "rotate-180" : "rotate-0"} transition-all duration-300`}
-            onClick={() => setShow3(!show3)}
-          />
-          <div className="absolute right-10 flex flex-row-reverse items-center justify-center gap-2">
-            <div
-              className={`w-0 border border-black h-0 group-hover:w-20 group-hover:border-black transition-all duration-300 ${show3 ? "w-20 border-black " : "w-0"}`}
-            />
-            <div
-              className={`clash text-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 ${show3 ? "opacity-100" : "opacity-0"}`}
-            >
-              Trousers
-            </div>
-          </div>
-        </div>
+                {/* TEXT */}
+                <div className="p-4 space-y-2">
+                  <h3 className="text-lg font-medium">
+                    {hotspots[activeIndex].title}
+                  </h3>
+                  <p className="text-sm text-neutral-600">
+                    {hotspots[activeIndex].desc}
+                  </p>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
