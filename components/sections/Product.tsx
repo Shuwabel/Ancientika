@@ -124,7 +124,7 @@ const Product = () => {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className="w-80 bg-white rounded-lg overflow-hidden shadow-2xl"
+                className="w-80 bg-white rounded-lg overflow-hidden shadow-2xl max-sm:scale-[0.8]"
               >
                 {/* IMAGE */}
                 <div className="relative h-60 w-full">

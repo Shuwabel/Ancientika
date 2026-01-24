@@ -43,7 +43,7 @@ export default function Home() {
         >
           <Header />
 
-          <main className="relative g-white">
+          <main className="relative bg-white">
             <Hero />
             <Poster />
             <Philosophy />

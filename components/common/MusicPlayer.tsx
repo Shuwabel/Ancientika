@@ -47,14 +47,13 @@ const MusicPlayer = () => {
 
       <button
         onClick={() => (isPlaying ? pauseMusic() : playMusic())}
-        className="fixed bottom-6 right-6 z-50 rounded-full bg-black/80 px-4 py-2 text-xs uppercase text-white flex items-center gap-4"
+        className="fixed bottom-6 right-6 z-50 rounded-full bg-black w-8 h-8 text-white flex items-center justify-center gap-4 shadow-2xl text-sm"
       >
         {isPlaying ? (
           <IoPauseCircle className="text-white" />
         ) : (
           <FiMusic className="text-white" />
         )}
-        {isPlaying ? "Pause sound" : "Play sound"}
       </button>
     </>
   );

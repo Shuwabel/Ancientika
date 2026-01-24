@@ -1,17 +1,26 @@
-import React from "react";
+"use client";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import BlurRevealText from "../common/BlurRevealText";
 import { motion } from "framer-motion";
 
 const Hero = () => {
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const formRef = useRef<HTMLFormElement>(null);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const email = formData.get("email") as string;
+    if (loading) return;
 
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email") as string;
     if (!email) return;
+
+    setLoading(true);
+    setMessage("");
 
     try {
       const res = await fetch("/api/waitlist", {
@@ -20,20 +29,29 @@ const Hero = () => {
         body: JSON.stringify({ email }),
       });
 
-      const data = await res.json();
+      const text = await res.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        throw new Error("Invalid JSON response");
+      }
 
-      // show success or error
-      const messageDiv = document.getElementById("message");
-      if (res.ok) {
-        messageDiv!.textContent = data.message;
-        form.reset();
-      } else {
-        messageDiv!.textContent = data.error || "Successful✨";
+      if (!res.ok) {
+        throw new Error(data.error || "Request failed");
+      }
+
+      setMessage(data.message);
+
+      // safer reset
+      if (formRef.current) {
+        formRef.current.reset();
       }
     } catch (err) {
       console.error(err);
-      const messageDiv = document.getElementById("message");
-      messageDiv!.textContent = "Failed to send request";
+      setMessage("Something went wrong. Try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -49,8 +67,8 @@ const Hero = () => {
           />
         </div>
 
-        <div className="Special w-full h-full flex items-center justify-center p-10 bg-primary flex-col relative gap-8 max-sm:gap-12">
-          <div className="text-xl clash text-center max-sm:text-xl">
+        <div className="Special w-full h-full flex items-center justify-center p-10 bg-primary flex-col relative gap-2 max-sm:gap-12">
+          <div className="text-xl clash text-center max-sm:text-xl relative">
             <motion.span
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -72,13 +90,15 @@ const Hero = () => {
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 1, ease: "easeInOut" }}
             viewport={{ once: true }}
-            className="w-[24vw] max-sm:w-full clash text-sm text-center cursor-default"
+            className="w-[24vw] max-sm:w-full clash text-sm text-center cursor-default my-4 "
           >
             Essential forms for modern living. Thoughtfully designed to move
             with you, adapt to your rhythm. Built to live with you, not just on
             you.
           </motion.p>
+
           <motion.form
+            ref={formRef}
             onSubmit={handleSubmit}
             initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -99,21 +119,24 @@ const Hero = () => {
               <input
                 type="email"
                 name="email"
-                id="1"
+                required
                 placeholder="Email"
                 className="border-b rounded-3xl  outline-none px-4 placeholder:text-neutral-500 bg-transparent "
               />
             </div>
-            <div className="w-full flex items-center justify-center magnet">
+            <div className="w-full flex items-center justify-center flex-col gap-2">
               <button
                 type="submit"
-                className=" bg-secondary cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out hover:bg-accent border-b border-secondary hover:text-black px-4 py-1 rounded-xl text-white "
+                disabled={loading}
+                className={` bg-secondary cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out hover:bg-accent border-b border-secondary hover:text-black px-4 py-1 rounded-xl text-white  ${
+                  loading ? "opacity-60 cursor-not-allowed" : "bg-black"
+                } `}
               >
-                Submit
+                {loading ? "Joining..." : "Join waitlist"}
               </button>
+              {message && <p className="text-sm">{message}</p>}
             </div>
           </motion.form>
-          <div id="message"></div>
         </div>
       </div>
     </div>
