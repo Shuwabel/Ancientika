@@ -16,6 +16,12 @@ export async function POST(req: Request) {
 
         await connectDB();
 
+        const users = await Waitlist.find({})
+            .sort({ createdAt: -1 })
+            .lean();
+
+        return NextResponse.json({ users });
+
         try {
             await Waitlist.create({ email });
         } catch (err: any) {
