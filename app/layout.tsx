@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import MouseMove from "@/components/common/MouseMove";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "Ancientika",
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body className={`antialiased`}>
         <MouseMove />
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
